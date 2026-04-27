@@ -46,6 +46,8 @@ class GamdlInterfaceArtistMediaTypeError(GamdlInterfaceError):
 
 class GamdlInterfaceFlatFilterExcludedError(GamdlInterfaceError):
     def __init__(self, media_id: str, result: Any):
-        super().__init__(f"Media excluded by flat filter: {media_id}")
+        super().__init__(
+            f"Media excluded by flat filter (media ID: {media_id}): {result}"
+        )
 
         self.result = result
