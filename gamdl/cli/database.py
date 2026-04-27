@@ -3,7 +3,13 @@ from pathlib import Path
 
 
 class Database:
-    def __init__(self, path: Path):
+    def __init__(
+        self,
+        path: Path,
+        overwrite: bool,
+    ):
+        self.overwrite = overwrite
+
         self.connection = sqlite3.connect(path)
         self.cursor = self.connection.cursor()
         self._create_tables()
@@ -45,4 +51,8 @@ class Database:
         if not result:
             return None
 
-        return result if Path(result).exists() else None
+        return (
+            "Registered in database"
+            if Path(result).exists() and not self.overwrite
+            else None
+        )

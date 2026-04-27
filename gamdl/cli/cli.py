@@ -119,7 +119,7 @@ async def main(config: CliConfig):
         )
 
     if config.database_path:
-        database = Database(config.database_path)
+        database = Database(config.database_path, config.overwrite)
         flat_filter = database.flat_filter
     else:
         database = None
