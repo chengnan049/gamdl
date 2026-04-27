@@ -134,7 +134,7 @@ class ItunesApi:
             response = await self.client.get(
                 ITUNES_PAGE_API_URL.format(media_type=media_type, media_id=media_id),
                 headers={
-                    "X-Apple-Store-Front": f"{self.storefront_id}-28,32 t:music31",
+                    "X-Apple-Store-Front": f"{self.storefront_id},32 t:music31",
                 },
             )
             response.raise_for_status()
