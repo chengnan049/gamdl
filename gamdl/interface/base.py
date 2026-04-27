@@ -133,6 +133,11 @@ class AppleMusicBaseInterface:
         itunes_api = itunes_api or await ItunesApi.create(
             storefront=apple_music_api.storefront,
             language=apple_music_api.language,
+            **(
+                {"storefront_id": None}
+                if apple_music_api.storefront.lower() != "us"
+                else {}
+            ),
         )
         cdm = cls.create_cdm(wvd_path)
 
