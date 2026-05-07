@@ -76,6 +76,14 @@ class AppleMusicMusicVideoInterface:
             query=urllib.parse.urlencode(query, doseq=True)
         ).geturl()
 
+        m3u8_master_url = m3u8_master_url.replace(
+            "itunes.apple.com",
+            "play.itunes.apple.com",
+        ).replace(
+            "MZPlayLocal.woa",
+            "MZPlay.woa",
+        )
+
         return m3u8_master_url
 
     async def get_tags(
